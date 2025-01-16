@@ -2,6 +2,7 @@ var express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const router = express.Router();
+var cors = require('cors')
 const healthCheckController = require("./routes/healthcheck.router");
 const clientController =  require("./routes/client.router");
 
@@ -11,6 +12,7 @@ var app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors())
 
 // Register Routes and Route Handlers
 app.use('/', healthCheckController);
